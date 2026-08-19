@@ -59,6 +59,62 @@ fun LogIn(modifier: Modifier = Modifier) {
                 .alpha(0.4f)
                 .size(350.dp)
         )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 35.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Universidad del Valle de Guatemala",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+            )
+            Text (
+                text = "Programación de plataformas móviles, Sección 30",
+                fontSize = 23.sp,
+                textAlign = TextAlign.Center,
+            )
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text (
+                    text = "INTEGRANTES",
+                    fontWeight = FontWeight.Bold
+                )
+                Column (
+                    horizontalAlignment = Alignment.End
+                ) {
+                    Text("Valeria Hernández")
+                    Text("José Pinto")
+                    Text("Jorge Martínez")
+                }
+            }
+
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text (
+                    text = "CATEDRÁTICO",
+                    fontWeight = FontWeight.Bold
+                )
+                Text("Juan Carlos Durini")
+            }
+
+            Column (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("Valeria Hernández Maldonado")
+                Text("25086")
+            }
+        }
     }
 }
 
