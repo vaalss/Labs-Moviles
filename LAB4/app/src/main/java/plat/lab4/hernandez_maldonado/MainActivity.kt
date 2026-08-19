@@ -71,11 +71,20 @@ fun LogIn(modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
             )
+            Spacer(
+                modifier = Modifier
+                    .height(20.dp)
+            )
             Text (
                 text = "Programación de plataformas móviles, Sección 30",
                 fontSize = 23.sp,
                 textAlign = TextAlign.Center,
             )
+            Spacer(
+                modifier = Modifier
+                    .height(20.dp)
+            )
+
             Row (
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -93,6 +102,10 @@ fun LogIn(modifier: Modifier = Modifier) {
                     Text("Jorge Martínez")
                 }
             }
+            Spacer(
+                modifier = Modifier
+                    .height(20.dp)
+            )
 
             Row (
                 modifier = Modifier
@@ -105,7 +118,9 @@ fun LogIn(modifier: Modifier = Modifier) {
                 )
                 Text("Juan Carlos Durini")
             }
-
+            Spacer(
+                modifier = Modifier.height(20.dp)
+            )
             Column (
                 modifier = Modifier
                     .fillMaxWidth(),
