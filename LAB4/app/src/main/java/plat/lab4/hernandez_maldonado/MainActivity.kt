@@ -56,7 +56,7 @@ fun LogIn(modifier: Modifier = Modifier) {
             painter = painterResource(id = R.drawable.fondo),
             contentDescription = null,
             modifier = Modifier
-                .alpha(0.4f)
+                .alpha(0.2f)
                 .size(350.dp)
         )
         Column(
@@ -70,15 +70,18 @@ fun LogIn(modifier: Modifier = Modifier) {
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
+                lineHeight = 40.sp
             )
             Spacer(
                 modifier = Modifier
                     .height(20.dp)
             )
+
             Text (
                 text = "Programación de plataformas móviles, Sección 30",
                 fontSize = 23.sp,
                 textAlign = TextAlign.Center,
+                lineHeight = 30.sp
             )
             Spacer(
                 modifier = Modifier
@@ -87,7 +90,8 @@ fun LogIn(modifier: Modifier = Modifier) {
 
             Row (
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(18.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text (
@@ -102,14 +106,11 @@ fun LogIn(modifier: Modifier = Modifier) {
                     Text("Jorge Martínez")
                 }
             }
-            Spacer(
-                modifier = Modifier
-                    .height(20.dp)
-            )
 
             Row (
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(18.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text (
@@ -119,8 +120,9 @@ fun LogIn(modifier: Modifier = Modifier) {
                 Text("Juan Carlos Durini")
             }
             Spacer(
-                modifier = Modifier.height(20.dp)
+                modifier = Modifier.height(5.dp)
             )
+
             Column (
                 modifier = Modifier
                     .fillMaxWidth(),
