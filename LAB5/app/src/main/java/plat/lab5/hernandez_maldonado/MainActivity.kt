@@ -1,5 +1,7 @@
 package plat.lab5.hernandez_maldonado
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -124,7 +126,13 @@ fun View(modifier: Modifier = Modifier) {
                     )
 
                     IconButton(
-                        onClick = { }
+                        onClick = {
+                            val uri = Uri.parse(
+                                "geo:0,0?q=14.53844743598816,-90.4561488649423(Don Emiliano)"
+                            )
+                            val intent = Intent(Intent.ACTION_VIEW, uri)
+                            context.startActivity(intent)
+                        }
                     ) {
                         Icon(
                             imageVector = Icons.Default.Directions,
