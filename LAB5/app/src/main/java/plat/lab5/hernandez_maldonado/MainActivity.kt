@@ -1,6 +1,7 @@
 package plat.lab5.hernandez_maldonado
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -29,6 +30,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,6 +49,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun View(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -154,19 +158,31 @@ fun View(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Button(
-                        onClick = { },
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "Valeria Hernández Maldonado",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.tertiary,
-                            contentColor = MaterialTheme.colorScheme.onPrimary
+                            contentColor = MaterialTheme.colorScheme.onTertiary
                         )
                         ) {
                         Text("Iniciar")
                     }
 
                     TextButton (
-                        onClick = { },
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "Carne a la parilla\nPrecio: QQ",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.textButtonColors(

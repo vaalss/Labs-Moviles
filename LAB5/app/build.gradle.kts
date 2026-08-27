@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace = "plat.lab5.hernandez_maldonado"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "plat.lab5.hernandez_maldonado"
