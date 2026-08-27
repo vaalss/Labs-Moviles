@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -57,215 +58,224 @@ class MainActivity : ComponentActivity() {
 fun View(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
-    Column(
+    Surface (
         modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Surface(
+            .fillMaxWidth()
+            .statusBarsPadding(),
+        color = MaterialTheme.colorScheme.background
+    )
+    {
+        Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            color = MaterialTheme.colorScheme.secondaryContainer
+                .fillMaxSize()
         ) {
-            Row (
+            Surface(
                 modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                FilledIconButton (
-                    onClick = {},
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary
-                    )
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Refresh,
-                        contentDescription = "Actualización"
-                    )
-                }
-                Text (
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .weight(1f),
-                    text = "Actualización disponible",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-
-                TextButton(
-                    onClick = {
-                        val uri = Uri.parse(
-                            "https://play.google.com/store/apps/details?id=com.nytimes.crossword"
-                        )
-                        val intent = Intent(Intent.ACTION_VIEW, uri)
-                        context.startActivity(intent)
-                    }
-                ) {
-                    Text(
-                        text ="Descargar",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
-        }
-
-        Spacer (
-            modifier = Modifier.height(20.dp)
-        )
-
-        Row(
-           modifier = Modifier
-               .fillMaxWidth()
-               .padding(horizontal = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column (
-                modifier = Modifier.weight(1f)
-            ) {
-                Text (
-                    text = "Sábado",
-                    style = MaterialTheme.typography.displaySmall,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text (
-                    text = "12 de diciembre",
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
-
-            OutlinedButton(
-                modifier = Modifier
-                    .weight(1f)
-                    .offset(y = 20.dp),
-                onClick = {},
-                shape = RoundedCornerShape(6.dp),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    contentColor = MaterialTheme.colorScheme.primary
-                )
-            ) {
-                Text(
-                    text = "Terminar jornada",
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary
-                )
-            }
-        }
-
-        Spacer (
-            modifier = Modifier.height(30.dp)
-        )
-
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 5.dp
-            ),
-            shape = RectangleShape
-        ) {
-            Column (
-                modifier = Modifier
-                    .padding(horizontal = 20.dp, vertical = 8.dp)
+                    .fillMaxWidth(),
+                color = MaterialTheme.colorScheme.secondaryContainer
             ) {
                 Row (
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                    modifier = Modifier
+                        .padding(vertical = 8.dp, horizontal = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
+                    FilledIconButton (
+                        onClick = {},
+                        colors = IconButtonDefaults.filledIconButtonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
+                        )
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Refresh,
+                            contentDescription = "Actualización"
+                        )
+                    }
                     Text (
-                        text = "Don Emiliano",
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        modifier = Modifier
+                            .padding(start = 10.dp)
+                            .weight(1f),
+                        text = "Actualización disponible",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer
                     )
 
-                    IconButton(
+                    TextButton(
                         onClick = {
                             val uri = Uri.parse(
-                                "geo:0,0?q=14.53844743598816,-90.4561488649423(Don Emiliano)"
+                                "https://play.google.com/store/apps/details?id=com.nytimes.crossword"
                             )
                             val intent = Intent(Intent.ACTION_VIEW, uri)
                             context.startActivity(intent)
                         }
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Directions,
-                            contentDescription = "Dirección",
-                            tint = MaterialTheme.colorScheme.primary
+                        Text(
+                            text ="Descargar",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.primary
                         )
-                    }
-                }
-
-                Text(
-                    text = "Km. 16 CAES, La Plazona",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Spacer (
-                    modifier = Modifier.height(8.dp)
-                )
-                Text(
-                    text = ("12:00 PM - 10:00 PM"),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-
-                )
-                Spacer (
-                    modifier = Modifier.height(8.dp)
-                )
-
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    Button(
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "Valeria Hernández Maldonado",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        },
-                        modifier = Modifier.weight(1f),
-                        shape = RoundedCornerShape(6.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.tertiary,
-                            contentColor = MaterialTheme.colorScheme.onTertiary
-                        )
-                        ) {
-                        Text("Iniciar")
-                    }
-
-                    TextButton (
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "Carne a la parrilla\nPrecio: QQ",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        },
-                        modifier = Modifier.weight(1f),
-                        shape = RoundedCornerShape(6.dp),
-                        colors = ButtonDefaults.textButtonColors(
-                            contentColor = MaterialTheme.colorScheme.tertiary
-                        )
-
-                        ) {
-                        Text("Detalles")
                     }
                 }
             }
 
+            Spacer (
+                modifier = Modifier.height(20.dp)
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column (
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text (
+                        text = "Sábado",
+                        style = MaterialTheme.typography.displaySmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    Text (
+                        text = "12 de diciembre",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
+                OutlinedButton(
+                    modifier = Modifier
+                        .weight(1f)
+                        .offset(y = 20.dp),
+                    onClick = {},
+                    shape = RoundedCornerShape(6.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = MaterialTheme.colorScheme.background,
+                        contentColor = MaterialTheme.colorScheme.primary
+                    )
+                ) {
+                    Text(
+                        text = "Terminar jornada",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
+
+            Spacer (
+                modifier = Modifier.height(30.dp)
+            )
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 5.dp
+                ),
+                shape = RectangleShape
+            ) {
+                Column (
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp, vertical = 8.dp)
+                ) {
+                    Row (
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text (
+                            text = "Don Emiliano",
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+
+                        IconButton(
+                            onClick = {
+                                val uri = Uri.parse(
+                                    "geo:0,0?q=14.53844743598816,-90.4561488649423(Don Emiliano)"
+                                )
+                                val intent = Intent(Intent.ACTION_VIEW, uri)
+                                context.startActivity(intent)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Directions,
+                                contentDescription = "Dirección",
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                    }
+
+                    Text(
+                        text = "Km. 16 CAES, La Plazona",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    Spacer (
+                        modifier = Modifier.height(8.dp)
+                    )
+                    Text(
+                        text = ("12:00 PM - 10:00 PM"),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+
+                    )
+                    Spacer (
+                        modifier = Modifier.height(8.dp)
+                    )
+
+                    Row (
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        Button(
+                            onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Valeria Hernández Maldonado",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(6.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.tertiary,
+                                contentColor = MaterialTheme.colorScheme.onTertiary
+                            )
+                        ) {
+                            Text("Iniciar")
+                        }
+
+                        TextButton (
+                            onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Carne a la parrilla\nPrecio: QQ",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
+                            modifier = Modifier.weight(1f),
+                            shape = RoundedCornerShape(6.dp),
+                            colors = ButtonDefaults.textButtonColors(
+                                contentColor = MaterialTheme.colorScheme.tertiary
+                            )
+
+                        ) {
+                            Text("Detalles")
+                        }
+                    }
+                }
+
+            }
         }
     }
+
 }
 
 @Preview(showBackground = true)
