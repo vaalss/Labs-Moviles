@@ -23,9 +23,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.IconButton
 import androidx.compose.material.icons.filled.Directions
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -56,12 +60,65 @@ fun View(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
     ) {
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth(),
+            color = MaterialTheme.colorScheme.secondaryContainer
+        ) {
+            Row (
+                modifier = Modifier
+                    .padding(vertical = 8.dp, horizontal = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                FilledIconButton (
+                    onClick = {},
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary
+                    )
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Refresh,
+                        contentDescription = "Actualización"
+                    )
+                }
+                Text (
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                        .weight(1f),
+                    text = "Actualización disponible",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                )
+
+                TextButton(
+                    onClick = {
+                        val uri = Uri.parse(
+                            "https://play.google.com/store/apps/details?id=com.nytimes.crossword"
+                        )
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        context.startActivity(intent)
+                    }
+                ) {
+                    Text(
+                        text ="Descargar",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
+        }
+
+        Spacer (
+            modifier = Modifier.height(20.dp)
+        )
+
         Row(
            modifier = Modifier
                .fillMaxWidth()
-               .padding(4.dp),
+               .padding(horizontal = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -100,10 +157,14 @@ fun View(modifier: Modifier = Modifier) {
             }
         }
 
+        Spacer (
+            modifier = Modifier.height(30.dp)
+        )
+
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 25.dp),
+                .padding(horizontal = 20.dp),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 5.dp
             ),
@@ -187,7 +248,7 @@ fun View(modifier: Modifier = Modifier) {
                         onClick = {
                             Toast.makeText(
                                 context,
-                                "Carne a la parilla\nPrecio: QQ",
+                                "Carne a la parrilla\nPrecio: QQ",
                                 Toast.LENGTH_SHORT
                             ).show()
                         },
