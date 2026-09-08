@@ -17,7 +17,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -47,21 +47,21 @@ fun Contador(
     modifier: Modifier = Modifier
 ) {
     var contador by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
     var incrementos by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
     var decrementos by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
     var max by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
     var min by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
-    val historial by remember {
+    val historial = remember {
         mutableListOf<Movimientos>()
     }
 
