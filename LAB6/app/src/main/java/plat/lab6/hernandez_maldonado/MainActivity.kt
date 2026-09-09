@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusTargetModifierNode
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import plat.lab6.hernandez_maldonado.ui.theme.LAB6Theme
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LAB6Theme {
-
+                Contador()
             }
         }
     }
@@ -71,6 +73,7 @@ fun Contador(
     val historial = remember {
         mutableListOf<Movimientos>()
     }
+    val totalCambios = incrementos + decrementos
 
     Surface (
         modifier = Modifier
@@ -90,7 +93,7 @@ fun Contador(
             )
 
             Spacer (
-                modifier = Modifier.height(20.dp)
+                modifier = Modifier.height(30.dp)
             )
 
             Row (
@@ -145,6 +148,103 @@ fun Contador(
                     )
                 }
             }
+
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 15.dp)
+            )
+
+            Column (
+                modifier = Modifier.padding(horizontal = 22.dp)
+            ) {
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text (
+                        text = "Total incrementos:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+
+                    Text (
+                        text = "$incrementos",
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                }
+
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text (
+                        text = "Total decrementos:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+
+                    Text (
+                        text = "$decrementos",
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                }
+
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text (
+                        text = "Valor máximo:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+
+                    Text (
+                        text = "$max",
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                }
+
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text (
+                        text = "Valor mínimo:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+
+                    Text (
+                        text = "$min",
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                }
+
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text (
+                        text = "Total cambios:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+
+                    Text (
+                        text = "$totalCambios",
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                }
+
+                Text (
+                    text = "Historial:",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineMedium
+                )
+            }
+
+
+
         }
     }
 }
