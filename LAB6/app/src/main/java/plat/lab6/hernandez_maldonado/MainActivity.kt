@@ -7,7 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
@@ -23,7 +27,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusTargetModifierNode
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import plat.lab6.hernandez_maldonado.ui.theme.LAB6Theme
 
 class MainActivity : ComponentActivity() {
@@ -72,19 +78,29 @@ fun Contador(
     ) {
         Column (
             modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
+                .fillMaxSize()
+                .padding(vertical = 15.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text (
-                text = "Valeria Hernández Maldonado",
+                modifier = Modifier,
+                text = "Valeria Hernández",
+                style = MaterialTheme.typography.headlineLarge
 
             )
 
+            Spacer (
+                modifier = Modifier.height(20.dp)
+            )
+
             Row (
-                modifier = Modifier,
+                modifier = Modifier
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.spacedBy(
+                    10.dp,
+                    Alignment.CenterHorizontally
+                )
             ) {
                 FilledIconButton(
                     onClick = {
@@ -107,7 +123,7 @@ fun Contador(
 
                 Text (
                     text = "$contador",
-                    style = MaterialTheme.typography.displayMedium
+                    style = MaterialTheme.typography.displayLarge
                 )
 
                 FilledIconButton(
