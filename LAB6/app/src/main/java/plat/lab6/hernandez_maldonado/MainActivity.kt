@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -55,7 +54,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class Movimientos (
+data class Movimiento (
     val valor: Int,
     val esIncremento: Boolean
 )
@@ -80,7 +79,7 @@ fun Contador(
         mutableIntStateOf(0)
     }
     val historial = remember {
-        mutableStateListOf<Movimientos>()
+        mutableStateListOf<Movimiento>()
     }
     val totalCambios = incrementos + decrementos
 
@@ -124,7 +123,7 @@ fun Contador(
                         }
 
                         historial.add(
-                            Movimientos(
+                            Movimiento(
                                 valor = contador,
                                 esIncremento = false
                             )
@@ -152,7 +151,7 @@ fun Contador(
                         }
 
                         historial.add(
-                            Movimientos(
+                            Movimiento(
                                 valor = contador,
                                 esIncremento = true
                             )
@@ -191,6 +190,10 @@ fun Contador(
                     )
                 }
 
+                Spacer (
+                    modifier = Modifier.height(10.dp)
+                )
+
                 Row (
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
@@ -206,6 +209,10 @@ fun Contador(
                         style = MaterialTheme.typography.headlineMedium
                     )
                 }
+
+                Spacer (
+                    modifier = Modifier.height(10.dp)
+                )
 
                 Row (
                     modifier = Modifier.fillMaxWidth(),
@@ -223,6 +230,10 @@ fun Contador(
                     )
                 }
 
+                Spacer (
+                    modifier = Modifier.height(10.dp)
+                )
+
                 Row (
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
@@ -238,6 +249,10 @@ fun Contador(
                         style = MaterialTheme.typography.headlineMedium
                     )
                 }
+
+                Spacer (
+                    modifier = Modifier.height(10.dp)
+                )
 
                 Row (
                     modifier = Modifier.fillMaxWidth(),
@@ -255,36 +270,44 @@ fun Contador(
                     )
                 }
 
+                Spacer (
+                    modifier = Modifier.height(10.dp)
+                )
+
                 Text (
                     text = "Historial:",
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.headlineMedium
                 )
 
+                Spacer (
+                    modifier = Modifier.height(10.dp)
+                )
+
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(5),
                     modifier = Modifier.weight(1f),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                    horizontalArrangement = Arrangement.spacedBy(15.dp),
+                    verticalArrangement = Arrangement.spacedBy(15.dp)
                 ) {
-                    items (historial) { Movimientos ->
-                        val colorMovimientos = if (Movimientos.esIncremento) {
-                            Color.Green
+                    items (historial) { Movimiento ->
+                        val colorMovimiento = if (Movimiento.esIncremento) {
+                            Color(0xFF16852B)
                         } else {
-                            Color.Red
+                            Color(0xFFC6281B)
                         }
 
                         Box (
                             modifier = Modifier
                                 .height(45.dp)
                                 .background(
-                                    color = colorMovimientos,
+                                    color = colorMovimiento,
                                     shape = RoundedCornerShape(10.dp)
                                 ),
                             contentAlignment = Alignment.Center
                         ) {
                             Text (
-                                text = "${Movimientos.valor}",
+                                text = "${Movimiento.valor}",
                                 color = Color.White,
                                 style = MaterialTheme.typography.headlineSmall
                             )
