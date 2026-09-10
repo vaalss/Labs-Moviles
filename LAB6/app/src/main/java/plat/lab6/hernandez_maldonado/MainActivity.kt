@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -162,7 +163,9 @@ fun Contador(
             )
 
             Column (
-                modifier = Modifier.padding(horizontal = 22.dp)
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 22.dp)
             ) {
                 Row (
                     modifier = Modifier.fillMaxWidth(),
@@ -252,6 +255,7 @@ fun Contador(
 
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(5),
+                    modifier = Modifier.weight(1f),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
@@ -279,6 +283,22 @@ fun Contador(
                         }
 
                     }
+                }
+
+                Button(
+                    onClick = {
+                        contador = 0
+                        incrementos = 0
+                        decrementos = 0
+                        max = 0
+                        min = 0
+                        historial.clear()
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text (
+                        text = "Reiniciar"
+                    )
                 }
             }
         }
