@@ -62,6 +62,55 @@ data class Movimiento (
 )
 
 @Composable
+fun Estadistica(
+    nombre: String,
+    valor: Int
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = nombre,
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.headlineMedium
+        )
+
+        Text(
+            text = "$valor",
+            style = MaterialTheme.typography.headlineMedium
+        )
+    }
+}
+
+@Composable
+fun ItemHistorial(
+    movimiento: Movimiento
+) {
+    val colorMovimiento = if (movimiento.esIncremento) {
+        Color(0xFF16852B)
+    } else {
+        Color(0xFFC6281B)
+    }
+
+    Box (
+        modifier = Modifier
+            .height(45.dp)
+            .background(
+                color = colorMovimiento,
+                shape = RoundedCornerShape(10.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = "${movimiento.valor}",
+            color = Color.White,
+            style = MaterialTheme.typography.headlineSmall
+        )
+    }
+}
+
+@Composable
 fun Contador(
     modifier: Modifier = Modifier
 ) {
@@ -177,101 +226,46 @@ fun Contador(
                     .fillMaxSize()
                     .padding(horizontal = 22.dp)
             ) {
-                Row (
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text (
-                        text = "Total incrementos:",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-
-                    Text (
-                        text = "$incrementos",
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                }
+                Estadistica(
+                    nombre = "Total incrementos:",
+                    valor = incrementos
+                )
 
                 Spacer (
                     modifier = Modifier.height(10.dp)
                 )
 
-                Row (
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text (
-                        text = "Total decrementos:",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-
-                    Text (
-                        text = "$decrementos",
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                }
+                Estadistica(
+                    nombre = "Total decrementos:",
+                    valor = decrementos
+                )
 
                 Spacer (
                     modifier = Modifier.height(10.dp)
                 )
 
-                Row (
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text (
-                        text = "Valor máximo:",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-
-                    Text (
-                        text = "$max",
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                }
+                Estadistica(
+                    nombre = "Valor máximo:",
+                    valor = max
+                )
 
                 Spacer (
                     modifier = Modifier.height(10.dp)
                 )
 
-                Row (
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text (
-                        text = "Valor mínimo:",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-
-                    Text (
-                        text = "$min",
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                }
+                Estadistica(
+                    nombre = "Valor mínimo:",
+                    valor = min
+                )
 
                 Spacer (
                     modifier = Modifier.height(10.dp)
                 )
 
-                Row (
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text (
-                        text = "Total cambios:",
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-
-                    Text (
-                        text = "$totalCambios",
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                }
+                Estadistica(
+                    nombre = "Total cambios:",
+                    valor = totalCambios
+                )
 
                 Spacer (
                     modifier = Modifier.height(10.dp)
@@ -293,29 +287,10 @@ fun Contador(
                     horizontalArrangement = Arrangement.spacedBy(15.dp),
                     verticalArrangement = Arrangement.spacedBy(15.dp)
                 ) {
-                    items (historial) { Movimiento ->
-                        val colorMovimiento = if (Movimiento.esIncremento) {
-                            Color(0xFF16852B)
-                        } else {
-                            Color(0xFFC6281B)
-                        }
-
-                        Box (
-                            modifier = Modifier
-                                .height(45.dp)
-                                .background(
-                                    color = colorMovimiento,
-                                    shape = RoundedCornerShape(10.dp)
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text (
-                                text = "${Movimiento.valor}",
-                                color = Color.White,
-                                style = MaterialTheme.typography.headlineSmall
-                            )
-                        }
-
+                    items (historial) { movimiento ->
+                        ItemHistorial(
+                            movimiento = movimiento
+                        )
                     }
                 }
 
