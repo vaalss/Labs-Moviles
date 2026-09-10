@@ -119,6 +119,10 @@ fun Contador(
                         contador--
                         decrementos++
 
+                        if (contador < min) {
+                            min = contador
+                        }
+
                         historial.add(
                             Movimientos(
                                 valor = contador,
@@ -142,6 +146,10 @@ fun Contador(
                     onClick = {
                         contador++
                         incrementos++
+
+                        if (contador > max) {
+                            max = contador
+                        }
 
                         historial.add(
                             Movimientos(
